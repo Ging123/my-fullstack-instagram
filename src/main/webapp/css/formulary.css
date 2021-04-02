@@ -1,0 +1,76 @@
+/*FORMULARY PART*/
+.mainFormularyContainer {
+  display:flex;
+  flex-flow:column;
+  width:350px;
+}
+
+.mainFormularyPart {
+  display:flex;
+  flex-flow:column;
+  background:white;
+  font-size:1.4rem;
+  padding:20px 40px;
+  border:1px solid var(--grayBorder);
+  width:100%;
+  text-align:center;
+  margin-bottom:10px;
+
+}
+
+.defaulFormulary {
+  width:100%;
+}
+
+/*INPUT PART*/
+
+.defaultInputContainer {
+  position:relative;
+  width:100%;
+  margin-bottom:5px;
+}
+
+.placeholder {
+  position:absolute;
+  top:50%;
+  left:11px;
+  transform:translateY(-50%);
+  font-size:1.4rem;
+  color:gray;
+  pointer-events:none;
+}
+
+.defaultInput {
+  width:100%;
+  background:var(--backgroundGray);
+  border:1px solid var(--grayBorder);
+  padding:10px;
+  outline:none;
+  border-radius:2px;
+}
+
+.defaultInput:focus {
+  border:1px solid var(--darkerGray);
+}
+
+
+/*INPUT SUBMIT PART*/
+.mainButton {
+  color:white;
+  font-weight:700;
+  padding:7px;
+  outline:none;
+  background:var(--mainButtonsBlue);
+  width:100%;
+  border:none;
+  border-radius:3px;
+  cursor:pointer;
+}
+
+.mainButton:hover {
+  filter:brightness(95%);
+}
+
+.mainButton:active {
+  filter:brightness(80%);
+}

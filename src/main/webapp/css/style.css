@@ -1,0 +1,25 @@
+* {
+  box-sizing:border-box;
+  font-family:arial;
+}
+
+html {
+  font-size:62.5%;
+}
+
+body {
+  background-color:var(--backgroundGray);
+}
+
+:root {
+  --grayBorder:#dbdbdb;
+  --backgroundGray:RGB(250, 250, 250);
+  --mainButtonsBlue:#0095f6;
+  --facebookBlue:#385185;
+  --darkerGray:#8e8e8e;
+}
+
+.column-gap {
+  margin-bottom:10px;
+}
+

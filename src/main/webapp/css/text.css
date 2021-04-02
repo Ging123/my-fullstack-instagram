@@ -1,0 +1,26 @@
+.instagramName {
+  position:relative;
+  left:50%;
+  transform:translateX(-50%);
+  width:165px;
+  margin-bottom:30px;
+}
+
+.orContainer {
+  display:flex;
+  flex-flow:row;
+  align-items:center;
+  margin:15px 0px;
+}
+
+.orContainer > div {
+  width:40%;
+  border-top:1px solid var(--grayBorder);
+}
+
+.orContainer > span {
+  color:gray;
+  font-weight:600;
+  text-transform:uppercase;
+  width:20%;
+}
