@@ -1,6 +1,8 @@
 var placeholderLoop;
 
 class Input {
+
+  //PLACEHOLDER ANIMATION AREA
   executePlaceholderAnimation() {
     const input = $(this);
     placeholderLoop = setInterval(() => {
@@ -12,6 +14,7 @@ class Input {
   }, 1);
   }
 
+
   doPlaceholderAnimation(input, placeholder, placeholderMustUp) {
     if(placeholderMustUp) {
       input.css({"padding":"20px 10px 0px 10px"});
@@ -21,12 +24,9 @@ class Input {
     input.css({"padding":"10px"});
     placeholder.css({"font-size":"1.4rem", "top":"50%"});
   }
-  
-  
 }
 
 const i = new Input();
 
 $(".defaultInputContainer > .defaultInput").click(i.executePlaceholderAnimation);
-
 $(".defaultInputContainer > .defaultInput").blur(() => clearInterval(placeholderLoop));

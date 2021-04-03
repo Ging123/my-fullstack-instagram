@@ -16,6 +16,7 @@
   height:400px;
   background-image:url(../images/phoneBackground1.jpg);
   background-size:100%;
+  transition:background-image 2s;
 }
 
 @media (max-width:876px) {#celphoneImageContainer{display:none;}}
