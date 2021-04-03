@@ -1,0 +1,19 @@
+#celphoneImageContainer {
+  position:relative;
+  width:370px;
+  margin-right:20px;
+}
+
+#celphoneImageContainer > img {
+  width:100%;
+}
+
+#backgroundImages {
+  position:absolute;
+  bottom:103px;
+  right:30px;
+  width:223px;
+  height:400px;
+  background-image:url(../images/phoneBackground1.jpg);
+  background-size:100%;
+}

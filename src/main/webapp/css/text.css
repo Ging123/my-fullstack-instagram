@@ -24,3 +24,28 @@
   text-transform:uppercase;
   width:20%;
 }
+
+.mainLinkText {
+  color:var(--mainButtonsBlue);
+  cursor:pointer;
+  text-decoration:none;
+  font-weight:600;
+}
+
+#loginWithFacebook {
+  color:var(--facebookBlue);
+  font-weight:600;
+  font-size:1.6rem;
+  cursor:pointer;
+}
+
+#loginWithFacebook::after {
+  font-size:1.4rem;
+  content:" Log in with facebook";
+}
+
+#forgotPassword {
+  font-size:1.2rem;
+  color:var(--facebookBlue);
+  cursor:pointer;
+}

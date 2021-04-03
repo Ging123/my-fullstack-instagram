@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,43 +9,63 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/formulary.css">
   <link rel="stylesheet" href="css/text.css">
+  <link rel="stylesheet" href="css/login.css">
+  <script src="https://kit.fontawesome.com/cf3bda86bb.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-  <section class="mainFormularyContainer">
+  <section class="screenContainer">
 
-    <section class="mainFormularyPart column-gap">
-      <img src="images/instagram_name.png" alt="it wasn't possible to load the image" 
-      class="instagramName">
-
-      <form action="" class="defaultFormulary">
-        <div class="defaultInputContainer">
-          <input type="text" class="defaultInput" maxlength="45">
-          <span class="placeholder">Phone number, username, or email</span>
-        </div>
-
-        <div class="defaultInputContainer">
-          <input type="password" class="defaultInput" maxlength="45">
-          <span class="placeholder">Password</span>
-        </div>
-
-        <input type="submit" class="mainButton" value="Log in" style="margin-top:7px;">
-      </form>
-
-      <div class="orContainer">
-        <div></div>
-        <span>or</span>
-        <div></div>
-      </div>
-
+    <section id="celphoneImageContainer">
+      <img src="images/phoneImage.jpg" alt="it wasn't possible to load the image">
+      <div id="backgroundImages"></div>
     </section>
 
-    <section class="mainFormularyPart column-gap">
-      <span>Don't have an account?  Sign up</span>
+    <section class="mainFormularyContainer">
+
+      <section class="mainFormularyPart column-gap">
+        <img src="images/instagram_name.png" alt="it wasn't possible to load the image" class="instagramName">
+
+        <form action="" class="defaultFormulary">
+          <div class="defaultInputContainer">
+            <input type="text" class="defaultInput" maxlength="45">
+            <span class="placeholder">Phone number, username, or email</span>
+          </div>
+
+          <div class="defaultInputContainer">
+            <input type="password" class="defaultInput" maxlength="45">
+            <span class="placeholder">Password</span>
+          </div>
+
+          <input type="submit" class="mainButton" value="Log in" style="margin-top:7px;">
+        </form>
+
+        <div class="orContainer">
+          <div></div>
+          <span>or</span>
+          <div></div>
+        </div>
+
+        <p id="loginWithFacebook"><i class="fab fa-facebook-square"></i></p>
+        <p id="forgotPassword">Forgot password?</p>
+      </section>
+
+      <section class="mainFormularyPart column-gap">
+        <span></i>Don't have an account? <a href="" class="mainLinkText">Sign up</a></span>
+      </section>
+
+      <section class="getTheAppContainer">
+        <p>Get the app.</p>
+        <div class="containerOfPlaystoreAndAppStoreLinks">
+          <img src="images/dowload_on_app_store.png" alt="it wasn't possible to load the image">
+          <img src="images/dowload_on_googleplay.png" alt="it wasn't possible to load the image">
+        </div>
+      </section>
+
     </section>
 
   </section>
-
 </body>
+
 </html>

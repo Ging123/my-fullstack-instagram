@@ -19,6 +19,15 @@ body {
   --darkerGray:#8e8e8e;
 }
 
+.screenContainer {
+  padding:25px;
+  display:flex;
+  flex-flow:row;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+}
+
 .column-gap {
   margin-bottom:10px;
 }
