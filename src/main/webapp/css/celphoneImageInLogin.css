@@ -17,3 +17,5 @@
   background-image:url(../images/phoneBackground1.jpg);
   background-size:100%;
 }
+
+@media (max-width:876px) {#celphoneImageContainer{display:none;}}
