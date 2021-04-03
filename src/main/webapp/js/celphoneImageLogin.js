@@ -1,5 +1,4 @@
 const Celphone = (function() {
-
   var srcs = ["images/phoneBackground1.jpg", "images/phoneBackground2.jpg_800","images/phoneBackground3.jpg", 
   "images/phoneBackground4.jpg", "images/phoneBackground5.jpg"];
   var current = 1;

@@ -58,10 +58,19 @@ form input[type="submit"] {
   padding:10px;
   outline:none;
   border-radius:2px;
+  text-overflow:ellipsis;
 }
 
 .defaultInput:focus {
   border:1px solid var(--darkerGray);
+}
+
+.defaultInputPadding {
+  padding-right:40px;
+}
+
+.defaultInputPadding:focus {
+  padding-right:10px;
 }
 
 .inputPasswordPadding {
@@ -87,6 +96,27 @@ form input[type="submit"] {
   cursor:pointer;
   font-weight:600;
   display:none;
+}
+
+/*OK ICONE AND ERRO ICONE FROM INPUT*/
+.okIcone {
+  top:50%;
+  transform:translateY(-50%);
+  position:absolute;
+  font-size:2.2rem;
+  color:gray;
+}
+
+.erroIcone {
+  top:50%;
+  transform:translateY(-50%);
+  position:absolute;
+  font-size:2.2rem;
+  color:red;
+}
+
+.defaultInputStatusIconePosition {
+  right:10px;
 }
 
 /*INPUT SUBMIT PART*/
