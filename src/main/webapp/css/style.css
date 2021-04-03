@@ -32,6 +32,19 @@ body {
   width:100%;
 }
 
-.column-gap {
+/*MY GAPS*/
+.column-gap-top {
+  margin-top:10px;
+}
+
+.column-gap-bottom {
   margin-bottom:10px;
+}
+
+.small-column-gap-top {
+  margin-top:5px;
+}
+
+.small-column-gap-bottom {
+  margin-bottom:5px;
 }

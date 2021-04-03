@@ -49,3 +49,15 @@
   color:var(--facebookBlue);
   cursor:pointer;
 }
+
+#singUpTo {
+  color:var(--darkerGray);
+  font-weight:600;
+  font-size:1.6rem;
+  margin-top:-10px;
+  margin-bottom:15px;
+}
+
+small {
+  color:gray;
+}
