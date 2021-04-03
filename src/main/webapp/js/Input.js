@@ -1,32 +1,62 @@
-var placeholderLoop;
+const Input = (function () {
+  var placeholderLoop;
 
-class Input {
-
-  //PLACEHOLDER ANIMATION AREA
-  executePlaceholderAnimation() {
+  function executePlaceholderAnimation() {
     const input = $(this);
     placeholderLoop = setInterval(() => {
-    if(input.val() !== "") {
-      i.doPlaceholderAnimation(input, input.parent().children(".placeholder"), true);
+      if (input.val() !== "") {
+        doPlaceholderAnimation(input, input.parent().children(".placeholder"), true);
+        return;
+      }
+      doPlaceholderAnimation(input, input.parent().children(".placeholder"), false);
+    }, 1);
+  }
+
+
+  function doPlaceholderAnimation(input, placeholder, placeholderMustUp) {
+    if (placeholderMustUp) {
+      input.css({ "padding-top":"20px", "padding-bottom":"0px"});
+      placeholder.css({ "font-size": "1rem", "top": "30%" });
       return;
     }
-    i.doPlaceholderAnimation(input, input.parent().children(".placeholder"), false);
-  }, 1);
+    input.css({ "padding-top": "10px", "padding-bottom":"10px"});
+    placeholder.css({ "font-size": "1.4rem", "top": "50%" });
   }
 
 
-  doPlaceholderAnimation(input, placeholder, placeholderMustUp) {
-    if(placeholderMustUp) {
-      input.css({"padding":"20px 10px 0px 10px"});
-      placeholder.css({"font-size":"1rem", "top":"30%"});
+  $(".defaultInputContainer > .defaultInput").click(executePlaceholderAnimation);
+  $(".defaultInputContainer > .defaultInput").blur(() => clearInterval(placeholderLoop));
+}());
+
+
+const Password = (function () {
+
+  function manipulateShowVisibility() {
+    const input = $(this);
+    const show = input.parent().children(".showPassword");
+    if (input.val() !== "") {
+      show.show();
       return;
-    } 
-    input.css({"padding":"10px"});
-    placeholder.css({"font-size":"1.4rem", "top":"50%"});
+    }
+    show.hide();
   }
-}
 
-const i = new Input();
 
-$(".defaultInputContainer > .defaultInput").click(i.executePlaceholderAnimation);
-$(".defaultInputContainer > .defaultInput").blur(() => clearInterval(placeholderLoop));
+  function manipulatePasswordVisibility() {
+    const input = $(this).parent().children(".defaultInput");
+    if(input.attr("type") === "password") {
+      input.attr("type", "text");
+      return;
+    }
+    input.attr("type", "password");
+  }
+
+
+  $(".defaultInput[type='password']").keyup(manipulateShowVisibility);
+  $(".showPassword").click(manipulatePasswordVisibility);
+}());
+
+
+
+
+

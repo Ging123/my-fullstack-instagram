@@ -6,6 +6,13 @@
   margin-bottom:30px;
 }
 
+.mainLinkText {
+  color:var(--mainButtonsBlue);
+  cursor:pointer;
+  text-decoration:none;
+  font-weight:600;
+}
+
 .orContainer {
   display:flex;
   flex-flow:row;
@@ -23,13 +30,6 @@
   font-weight:600;
   text-transform:uppercase;
   width:20%;
-}
-
-.mainLinkText {
-  color:var(--mainButtonsBlue);
-  cursor:pointer;
-  text-decoration:none;
-  font-weight:600;
 }
 
 #loginWithFacebook {

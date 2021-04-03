@@ -19,6 +19,10 @@ body {
   --darkerGray:#8e8e8e;
 }
 
+.invisibleElement {
+  display:none;
+}
+
 .screenContainer {
   padding:25px;
   display:flex;
@@ -31,4 +35,3 @@ body {
 .column-gap {
   margin-bottom:10px;
 }
-

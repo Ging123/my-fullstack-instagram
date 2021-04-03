@@ -47,17 +47,6 @@
   margin-bottom:5px;
 }
 
-.placeholder {
-  position:absolute;
-  top:50%;
-  left:11px;
-  transform:translateY(-50%);
-  font-size:1.4rem;
-  color:gray;
-  pointer-events:none;
-  transition:font-size .2s, top .2s;
-}
-
 .defaultInput {
   width:100%;
   background:var(--backgroundGray);
@@ -71,6 +60,30 @@
   border:1px solid var(--darkerGray);
 }
 
+.inputPasswordPadding {
+  padding-right:70px;
+}
+
+.placeholder {
+  position:absolute;
+  top:50%;
+  left:11px;
+  transform:translateY(-50%);
+  font-size:1.4rem;
+  color:gray;
+  pointer-events:none;
+  transition:font-size .2s, top .2s;
+}
+
+.showPassword {
+  position:absolute;
+  top:50%;
+  right:10px;
+  transform:translateY(-50%);
+  cursor:pointer;
+  font-weight:600;
+  display:none;
+}
 
 /*INPUT SUBMIT PART*/
 .mainButton {
