@@ -58,6 +58,8 @@
   margin-bottom:15px;
 }
 
-small {
+#termOfDataPolicyAndCookies {
   color:gray;
+  font-size:1.2rem;
+  text-decoration:none;
 }

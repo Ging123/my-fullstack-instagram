@@ -1,28 +1,62 @@
+var validateNumberOrEmail;
 var validateFullname;
 var validatePassword;
 
 const InputValidator = (function() {
+	
+	//AJAX METHODS 
+	 function searchRepeatDataViaAjax(value = "", column = "", theUrl = "") {
+		let result;
+    $.ajax({
+			url:theUrl,
+			data: {input:JSON.stringify(value), sqlColumn:column},
+			type:'POST',
+			dataType:"json",
+			async:false,
+			success:function(data) {
+				result = data;
+			}
+		});
+		return result;
+}
+	
+	//METHODS OF VALIDATE MOBILE NUMBER OR EMAIL
+	validateNumberOrEmail = function(input) {
+		input = $(input);
+		const icone = input.parent().children("i");
+		if(input.val() !== "") {
+			const isAInvalidEmail = validateRegexp(input.val(), /^\w+@{1}(outlook|hotmail|gmail)\.com{1}$/);
+			const isAInvalidMobileNumber = validateRegexp(input.val(), /^\d{8}$/);
+			const theEmailOrNumberAlredyExists = searchRepeatDataViaAjax(input.val(),"number_or_email" , "/my_fullstack_instagram/searchForEquals");
+			showIconeBasedInTheEmailOrPasswordValidation(isAInvalidEmail, isAInvalidMobileNumber, theEmailOrNumberAlredyExists, icone);
+			return;
+		}
+		manipulateStatusInputVisibility(icone, false);
+	}
+	
+	
+	function showIconeBasedInTheEmailOrPasswordValidation(isAInvalidEmail = true, isAInvalidMobileNumber = true,
+	 theEmailOrNumberAlredyExists = true, icone) {
+		icone.removeClass();
+		if(!theEmailOrNumberAlredyExists) {
+			if(!isAInvalidEmail || !isAInvalidMobileNumber) {
+			icone.addClass("far fa-check-circle okIcone defaultInputStatusIconePosition");
+			return;
+		}
+		}
+		icone.addClass("far fa-times-circle erroIcone defaultInputStatusIconePosition");
+	}
+	
   
-  //METHODS OF FULL NAME INPUT
+  //METHODS OF VALIDATE FULL NAME INPUT
   validateFullname = function(input) {
     input = $(input);
     const icone = input.parent().children("i");
     if(input.val() !== "") {
       const theNameIsAValidName = validateRegexp(input.val(), /\d+/);
       const theNameHasAValidSize = seeIfTheStringIsGreaterThan(input.val(), 2); 
+			console.log(theNameHasAValidSize);
       showIconeBasedInTheFullnameValidation(theNameIsAValidName, theNameHasAValidSize, icone);
-      return;
-    }
-    manipulateStatusInputVisibility(icone, false);
-  }
-
-
-  validatePassword = function(input) {
-    input = $(input);
-    const icone = input.parent().children("i");
-    if(input.val() !== "") {
-      const theNameHasAValidSize = seeIfTheStringIsGreaterThan(input.val(), 6); 
-      showIconeBasedInThePasswordValidation(theNameHasAValidSize, icone);
       return;
     }
     manipulateStatusInputVisibility(icone, false);
@@ -36,6 +70,19 @@ const InputValidator = (function() {
       return;
     }
     icone.addClass("far fa-times-circle erroIcone defaultInputStatusIconePosition");
+  }
+
+
+  //METHODS OF VALIDATE PASSWORD
+  validatePassword = function(input) {
+    input = $(input);
+    const icone = input.parent().children("i");
+    if(input.val() !== "") {
+      const theNameHasAValidSize = seeIfTheStringIsGreaterThan(input.val(), 6); 
+      showIconeBasedInThePasswordValidation(theNameHasAValidSize, icone);
+      return;
+    }
+    manipulateStatusInputVisibility(icone, false);
   }
 
 
@@ -68,7 +115,6 @@ const InputValidator = (function() {
     const icone = $(input).parent().children("i");
     if(inputHasFocus) {
       manipulateStatusInputVisibility(icone, false);
-      return;
     }
     if(inputHasFocus === false && input.value !== "") {
       manipulateStatusInputVisibility(icone, true);

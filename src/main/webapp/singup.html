@@ -27,10 +27,12 @@
           <div></div>
         </div>
 
-        <form action="" class="defaultFormulary column-gap-bottom">
+        <form action="" class="defaultFormulary column-gap-bottom hasIcone">
           <div class="defaultInputContainer">
-            <input type="text" class="defaultInput" maxlength="45">
+            <input type="text" class="defaultInput defaultInputPadding" maxlength="45"
+            onblur="validateNumberOrEmail(event.target)">
             <span class="placeholder">Mobile Number or Email</span>
+            <i></i>
           </div>
 
           <div class="defaultInputContainer hasIcone">
@@ -56,7 +58,8 @@
           <input type="submit" value="Sing up" class="mainButton">
         </form>
         
-        <small class="column-gap-top">By signing up, you agree to our Terms , Data Policy and Cookies Policy .</small>
+        <a id="termOfDataPolicyAndCookies" class="column-gap-top" href="https://help.instagram.com/1896641480634370?ref=ig" target="_blank"
+        >By signing up, you agree to our Terms , Data Policy and Cookies Policy .</a>
       </section>
 
       <section class="mainFormularyPart column-gap-bottom">
