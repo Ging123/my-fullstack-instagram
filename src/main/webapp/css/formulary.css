@@ -119,6 +119,11 @@ form input[type="submit"] {
   right:10px;
 }
 
+.passwordInputStatusIconePosition {
+  top:55%;
+  right:50px;
+}
+
 /*INPUT SUBMIT PART*/
 .mainButton {
   color:white;

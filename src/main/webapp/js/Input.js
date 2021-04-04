@@ -1,4 +1,5 @@
 var validateFullname;
+var validatePassword;
 
 const InputValidator = (function() {
   
@@ -16,6 +17,18 @@ const InputValidator = (function() {
   }
 
 
+  validatePassword = function(input) {
+    input = $(input);
+    const icone = input.parent().children("i");
+    if(input.val() !== "") {
+      const theNameHasAValidSize = seeIfTheStringIsGreaterThan(input.val(), 6); 
+      showIconeBasedInThePasswordValidation(theNameHasAValidSize, icone);
+      return;
+    }
+    manipulateStatusInputVisibility(icone, false);
+  }
+
+
   function showIconeBasedInTheFullnameValidation(theNameIsAValidName, theNameHasAValidSize, icone) {
     icone.removeClass();
     if(theNameHasAValidSize && theNameIsAValidName) {
@@ -23,6 +36,15 @@ const InputValidator = (function() {
       return;
     }
     icone.addClass("far fa-times-circle erroIcone defaultInputStatusIconePosition");
+  }
+
+
+  function showIconeBasedInThePasswordValidation(theNameHasAValidSize = true, icone) {
+    if(theNameHasAValidSize) {
+      icone.addClass("far fa-check-circle okIcone passwordInputStatusIconePosition");
+      return;
+    }
+    icone.addClass("far fa-times-circle erroIcone passwordInputStatusIconePosition");
   }
 
 

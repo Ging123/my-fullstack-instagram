@@ -45,10 +45,12 @@
             <span class="placeholder">Username</span>
           </div>
 
-          <div class="defaultInputContainer">
-            <input type="password" class="defaultInput inputPasswordPadding" maxlength="45">
+          <div class="defaultInputContainer hasIcone">
+            <input type="password" class="defaultInput inputPasswordPadding" maxlength="45"
+            onblur="validatePassword(event.target)">
             <span class="placeholder">Password</span>
             <span class="showPassword">show</span>
+            <i></i>
           </div>
 
           <input type="submit" value="Sing up" class="mainButton">
