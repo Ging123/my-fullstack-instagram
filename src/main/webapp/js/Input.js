@@ -1,5 +1,6 @@
 var validateNumberOrEmail;
 var validateFullname;
+var validateUsername;
 var validatePassword;
 
 const InputValidator = (function() {
@@ -55,7 +56,6 @@ const InputValidator = (function() {
     if(input.val() !== "") {
       const theNameIsAValidName = validateRegexp(input.val(), /\d+/);
       const theNameHasAValidSize = seeIfTheStringIsGreaterThan(input.val(), 2); 
-			console.log(theNameHasAValidSize);
       showIconeBasedInTheFullnameValidation(theNameIsAValidName, theNameHasAValidSize, icone);
       return;
     }
@@ -72,6 +72,29 @@ const InputValidator = (function() {
     icone.addClass("far fa-times-circle erroIcone defaultInputStatusIconePosition");
   }
 
+
+	//METHODS OF VALIDATE USERNAME
+	validateUsername = function(input) {
+		input = $(input);
+		const icone = input.parent().children("i");
+		if(input.val() !== "") {
+			const theUsernameAlredyExists = searchRepeatDataViaAjax(input.val(),"username" , "/my_fullstack_instagram/searchForEquals");
+			showIconeBasedInTheUsernameValidation(theUsernameAlredyExists, icone);
+			return;
+		}
+		manipulateStatusInputVisibility(icone, false);
+	}
+	
+	
+	function showIconeBasedInTheUsernameValidation(theUsernameAlredyExists = true, icone) {
+		icone.removeClass();
+    if(!theUsernameAlredyExists) {
+      icone.addClass("far fa-check-circle okIcone defaultInputStatusIconePosition");
+      return;
+    }
+    icone.addClass("far fa-times-circle erroIcone defaultInputStatusIconePosition");
+  }
+	
 
   //METHODS OF VALIDATE PASSWORD
   validatePassword = function(input) {
