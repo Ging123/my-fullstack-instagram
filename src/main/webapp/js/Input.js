@@ -6,37 +6,38 @@ var validatePassword;
 const InputValidator = (function() {
 	
 	//AJAX METHODS 
-	 function searchRepeatDataViaAjax(value = "", column = "", theUrl = "") {
-		let result;
-    $.ajax({
+	 function searchRepeatDataViaAjax(input, column = "", theUrl = "", func) {
+    return $.ajax({
 			url:theUrl,
-			data: {input:JSON.stringify(value), sqlColumn:column},
+			data: {input:JSON.stringify(input.val()), sqlColumn:column},
 			type:'POST',
 			dataType:"json",
-			async:false,
 			success:function(data) {
-				result = data;
+				func(input, data);
 			}
 		});
-		return result;
-}
+	}
 	
 	//METHODS OF VALIDATE MOBILE NUMBER OR EMAIL
 	validateNumberOrEmail = function(input) {
 		input = $(input);
-		const icone = input.parent().children("i");
 		if(input.val() !== "") {
-			const isAInvalidEmail = validateRegexp(input.val(), /^\w+@{1}(outlook|hotmail|gmail)\.com{1}$/);
-			const isAInvalidMobileNumber = validateRegexp(input.val(), /^\d{8}$/);
-			const theEmailOrNumberAlredyExists = searchRepeatDataViaAjax(input.val(),"number_or_email" , "/my_fullstack_instagram/searchForEquals");
-			showIconeBasedInTheEmailOrPasswordValidation(isAInvalidEmail, isAInvalidMobileNumber, theEmailOrNumberAlredyExists, icone);
+			searchRepeatDataViaAjax(input,"number_or_email" , "/my_fullstack_instagram/searchForEquals", finalizyTheEmailOrNumberValidation);
 			return;
 		}
 		manipulateStatusInputVisibility(icone, false);
 	}
 	
 	
-	function showIconeBasedInTheEmailOrPasswordValidation(isAInvalidEmail = true, isAInvalidMobileNumber = true,
+	function finalizyTheEmailOrNumberValidation(input, theNameAlredyExist) {
+		const isAInvalidEmail = validateRegexp(input.val(), /^\w+@{1}(outlook|hotmail|gmail)\.com{1}$/);
+		const isAInvalidMobileNumber = validateRegexp(input.val(), /^\d{8}$/);
+		const icone = input.parent().children("i");
+		showIconeBasedInTheEmailOrMobileValidation(isAInvalidEmail, isAInvalidMobileNumber, theNameAlredyExist, icone);
+	}
+	
+	
+	function showIconeBasedInTheEmailOrMobileValidation(isAInvalidEmail = true, isAInvalidMobileNumber = true,
 	 theEmailOrNumberAlredyExists = true, icone) {
 		icone.removeClass();
 		if(!theEmailOrNumberAlredyExists) {
@@ -78,21 +79,21 @@ const InputValidator = (function() {
 		input = $(input);
 		const icone = input.parent().children("i");
 		if(input.val() !== "") {
-			const theUsernameAlredyExists = searchRepeatDataViaAjax(input.val(),"username" , "/my_fullstack_instagram/searchForEquals");
-			showIconeBasedInTheUsernameValidation(theUsernameAlredyExists, icone);
+			searchRepeatDataViaAjax(input,"username" , "/my_fullstack_instagram/searchForEquals", showIconeBasedInTheUsernameValidation);
 			return;
 		}
 		manipulateStatusInputVisibility(icone, false);
 	}
 	
 	
-	function showIconeBasedInTheUsernameValidation(theUsernameAlredyExists = true, icone) {
+	function showIconeBasedInTheUsernameValidation(input, theUsernameAlredyExists = true) {
+		const icone = input.parent().children("i");
 		icone.removeClass();
     if(!theUsernameAlredyExists) {
-      icone.addClass("far fa-check-circle okIcone defaultInputStatusIconePosition");
+      icone.addClass("far fa-check-circle okIcone usernameInputStatusIconePosition");
       return;
     }
-    icone.addClass("far fa-times-circle erroIcone defaultInputStatusIconePosition");
+    icone.addClass("far fa-times-circle erroIcone usernameInputStatusIconePosition");
   }
 	
 
@@ -214,4 +215,9 @@ const InputPassword = (function () {
 
   $(".defaultInput[type='password']").keyup(manipulateShowVisibility);
   $(".showPassword").click(manipulatePasswordVisibility);
+}());
+
+
+const UsernameGenarator = (function() {
+	
 }());
