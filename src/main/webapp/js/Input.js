@@ -2,25 +2,28 @@ var validateNumberOrEmail;
 var validateFullname;
 var validateUsername;
 var validatePassword;
+var executePlaceholderAnimation;
+	
 
 const InputValidator = (function() {
 	
 	//AJAX METHODS 
-	 function searchRepeatDataViaAjax(input, column = "", theUrl = "", func) {
-    return $.ajax({
-			url:theUrl,
-			data: {input:JSON.stringify(input.val()), sqlColumn:column},
-			type:'POST',
-			dataType:"json",
-			success:function(data) {
-				func(input, data);
-			}
+	function searchRepeatDataViaAjax(input = "", column = "", theUrl = "", func) {
+  $.ajax({
+	  url:theUrl,
+		data: {input:JSON.stringify(input.val()), sqlColumn:column},
+		type:'POST',
+		dataType:"json",
+		success:function(data) {
+			func(input, data);
+		}
 		});
 	}
 	
 	//METHODS OF VALIDATE MOBILE NUMBER OR EMAIL
 	validateNumberOrEmail = function(input) {
 		input = $(input);
+		const icone = input.parent().children("i");
 		if(input.val() !== "") {
 			searchRepeatDataViaAjax(input,"number_or_email" , "/my_fullstack_instagram/searchForEquals", finalizyTheEmailOrNumberValidation);
 			return;
@@ -76,6 +79,7 @@ const InputValidator = (function() {
 
 	//METHODS OF VALIDATE USERNAME
 	validateUsername = function(input) {
+		console.log("oi")
 		input = $(input);
 		const icone = input.parent().children("i");
 		if(input.val() !== "") {
@@ -111,6 +115,7 @@ const InputValidator = (function() {
 
 
   function showIconeBasedInThePasswordValidation(theNameHasAValidSize = true, icone) {
+		icone.removeClass();
     if(theNameHasAValidSize) {
       icone.addClass("far fa-check-circle okIcone passwordInputStatusIconePosition");
       return;
@@ -163,9 +168,9 @@ const InputValidator = (function() {
 const PlaceholderAnimator = (function () {
   var placeholderLoop;
 
-  function executePlaceholderAnimation() {
-    const input = $(this);
-    placeholderLoop = setInterval(() => {
+  executePlaceholderAnimation = function() {
+		const input = $(this);
+    placeholderLoop = setInterval(() => { 
       if (input.val() !== "") {
         doPlaceholderAnimation(input, input.parent().children(".placeholder"), true);
         return;
@@ -191,7 +196,7 @@ const PlaceholderAnimator = (function () {
 }());
 
 
-const InputPassword = (function () {
+const InputPassword = (function () { 
   function manipulateShowVisibility() {
     const input = $(this);
     const show = input.parent().children(".showPassword");
@@ -219,5 +224,55 @@ const InputPassword = (function () {
 
 
 const UsernameGenarator = (function() {
+	function generateARandomUsername() { 
+		const fullNameTyped = $("#inputFullname").val();
+		if(fullNameTyped !== "") { 
+			generateARandomName(Math.floor(Math.random() * 5 + 3), fullNameTyped);
+			return;
+		}
+		generateARandomName(Math.floor(Math.random() * 10 + 3));
+	}
 	
+	
+	function generateARandomName(howMuchOfLength = 0, baseInThisInput = "") {
+		const characteres = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q'
+		, 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+		for(let i = 0; i < howMuchOfLength; i++) {
+			baseInThisInput += characteres[Math.floor(Math.random() * characteres.length)];
+		}
+		searchNameGenaratedViaAjax(baseInThisInput, "username" , "/my_fullstack_instagram/searchForEquals", validateUsernameGenerated);
+	}
+	
+	
+	function validateUsernameGenerated(usernameGenerated, usernameExist) {
+		if(usernameExist) {
+			generateARandomUsername();
+			return;
+		} 
+		putUsernameGeneratedInTheInput(usernameGenerated);
+	}
+	
+	
+	function putUsernameGeneratedInTheInput(usernameGenerated) {
+    const input = $("#generateUsernameIcone").parent().children("input");
+		input.val(usernameGenerated);
+		validateUsername(input);
+		input.trigger('click');
+	}
+	
+	
+	function searchNameGenaratedViaAjax(value = "", column = "", theUrl = "", func) {
+  $.ajax({
+	  url:theUrl,
+		data: {input:JSON.stringify(value), sqlColumn:column},
+		type:'POST',
+		dataType:"json",
+		success:function(data) {
+			func(value, data);
+		}
+		});
+	}
+	
+	
+	$("#generateUsernameIcone").click(generateARandomUsername);
 }());
