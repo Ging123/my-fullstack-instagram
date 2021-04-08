@@ -13,6 +13,12 @@
   font-weight:600;
 }
 
+.mainLinkTextWithoutBold {
+  color:var(--mainButtonsBlue);
+  cursor:pointer;
+  text-decoration:none;
+}
+
 .orContainer {
   display:flex;
   flex-flow:row;
@@ -30,6 +36,12 @@
   font-weight:600;
   text-transform:uppercase;
   width:20%;
+}
+
+.smallText {
+  color:gray;
+  font-size:1.2rem;
+  text-decoration:none;
 }
 
 #loginWithFacebook {
@@ -56,10 +68,4 @@
   font-size:1.6rem;
   margin-top:-10px;
   margin-bottom:15px;
-}
-
-#termOfDataPolicyAndCookies {
-  color:gray;
-  font-size:1.2rem;
-  text-decoration:none;
 }

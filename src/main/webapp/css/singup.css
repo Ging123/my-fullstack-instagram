@@ -1,0 +1,26 @@
+#birthdayImg {
+  position: relative;
+  left:50%;
+  transform:translateX(-50%);
+  width:125px;
+}
+
+#addYourBirthDay {
+  margin:15px 0px;
+  font-weight:550;
+  font-size:1.6rem;
+  color:rgb(51, 51, 51);
+}
+
+#dateContainer {
+  margin-top:15px;
+}
+
+#dateContainer > select {
+  width:32%;
+  padding:10px 5px;
+  outline:none;
+  border:1px solid var(--grayBorder);
+  color:gray;
+  border-radius:3px;
+}

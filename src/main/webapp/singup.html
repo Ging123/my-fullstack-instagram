@@ -8,15 +8,16 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/formulary.css">
   <link rel="stylesheet" href="css/text.css">
+  <link rel="stylesheet" href="css/singup.css">
   <script src="https://kit.fontawesome.com/cf3bda86bb.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
   
   <section class="screenContainer">
-    <section class="mainFormularyContainer">
+    <section class="mainFormularyContainer" >
 
-      <section class="mainFormularyPart column-gap">
+      <section class="mainFormularyPart column-gap" id="firstSingupScreen">
         <img src="images/instagram_name.png" alt="it wasn't possible to load the image" class="instagramName">
         <span id="singUpTo">Sign up to see photos and videos from your friends.</span>
         <button class="mainButton"><i class="fab fa-facebook-square"></i> Log in with facebook</button>
@@ -27,27 +28,22 @@
           <div></div>
         </div>
 
-        <form action="" class="defaultFormulary column-gap-bottom hasIcone">
+        <div class="defaultFormulary column-gap-bottom">
           <div class="defaultInputContainer">
-            <input type="text" class="defaultInput defaultInputPadding" maxlength="45"
-            onblur="validateNumberOrEmail(event.target)">
+            <input type="text" class="defaultInput" maxlength="45">
             <span class="placeholder">Mobile Number or Email</span>
-            <i></i>
           </div>
 
           <div class="defaultInputContainer hasIcone">
-            <input type="text" class="defaultInput defaultInputPadding" maxlength="45" id="inputFullname"
+            <input type="text" class="defaultInput defaultInputPadding" maxlength="45"
             onblur="validateFullname(event.target)">
             <span class="placeholder">Full Name</span>
             <i></i>
           </div>
 
-          <div class="defaultInputContainer hasIcone">
-            <input type="text" class="defaultInput usernameInputPadding" maxlength="45"
-            onblur="validateUsername(event.target)">
+          <div class="defaultInputContainer">
+            <input type="text" class="defaultInput" maxlength="45">
             <span class="placeholder">Username</span>
-            <span id="generateUsernameIcone"><i class="fas fa-redo"></i></span>
-            <i></i>
           </div>
 
           <div class="defaultInputContainer hasIcone">
@@ -58,15 +54,38 @@
             <i></i>
           </div>
 
-          <input type="submit" value="Sing up" class="mainButton">
-        </form>
+          <button id="singupButton" class="mainButton column-gap-top">Sing up</button>
+        </div>
         
-        <a id="termOfDataPolicyAndCookies" class="column-gap-top" href="https://help.instagram.com/1896641480634370?ref=ig" target="_blank"
+        <a class="smallText" class="column-gap-top" href="https://help.instagram.com/1896641480634370?ref=ig" target="_blank"
         >By signing up, you agree to our Terms , Data Policy and Cookies Policy .</a>
       </section>
 
+      <section class="mainFormularyPart column-gap" id="secondSingupScreen" style="display:none;">
+        <img src="images/birthdayimage.jpg" alt="it wasn't possible to load the image"
+        draggable="false" id="birthdayImg">
+        <div id="addYourBirthDay">Add Your Birthday</div>
+
+        <div class="defaultFormulary column-gap-bottom"> 
+          <span>This won't be a part of your public profile.</span>
+          <div class="small-column-gap-top column-gap-bottom mainLinkTextWithoutBold">Why do I need to provide my birthday?</div>
+          
+          <div id="dateContainer">
+            <select name="" id="month"></select>
+            <select name="" id="day"></select>
+            <select name="" id="year"></select>
+          </div>
+
+          <p class="smallText column-gap-bottom">You need to enter the date you were born</p>
+          <p class="smallText column-gap-bottom column-gap-top">Use your own birthday, even if this account is for a business, a pet, or something else</p>
+          <button class="mainButton column-gap-top column-gap-bottom">Next</button>
+          <div id="goBackToEmailScreen" class="mainLinkText column-gap-top">go back</div>
+        </div>
+        
+      </section>
+
       <section class="mainFormularyPart column-gap-bottom">
-        <span></i>Have an account? <a href="../webapp/login.html" class="mainLinkText">Log in</a></span>
+        <span></i>Have an account? <a href="../webapp/login.html" class="mainLinkTextWithoutBold">Log in</a></span>
       </section>
 
       <section class="getTheAppContainer">
@@ -82,10 +101,11 @@
       </section>
 
     </section>
+    
   </section>
-
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="js/Input.js"></script>
+  <script src="js/singup.js"></script>
 </body>
 </html>

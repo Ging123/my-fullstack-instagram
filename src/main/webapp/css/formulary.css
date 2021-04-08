@@ -61,6 +61,22 @@ form input[type="submit"] {
   text-overflow:ellipsis;
 }
 
+.defaultInput:focus {
+  border:1px solid var(--darkerGray);
+}
+
+.defaultInputPadding {
+  padding-right:40px;
+}
+
+.defaultInputPadding:focus {
+  padding-right:10px;
+}
+
+.inputPasswordPadding {
+  padding-right:70px;
+}
+
 .placeholder {
   position:absolute;
   top:50%;
@@ -80,41 +96,6 @@ form input[type="submit"] {
   cursor:pointer;
   font-weight:600;
   display:none;
-}
-
-/*INPUTS PADDING*/
-#generateUsernameIcone {
-	position:absolute;
-	top:50%;
-	right:10px;
-	transform:translateY(-50%);
-	font-size:2rem;
-	color:var(--mainButtonsBlue);
-	cursor:pointer;
-}
-
-.defaultInput:focus {
-  border:1px solid var(--darkerGray);
-}
-
-.defaultInputPadding {
-  padding-right:40px;
-}
-
-.defaultInputPadding:focus {
-  padding-right:10px;
-}
-
-.inputPasswordPadding {
-  padding-right:70px;
-}
-
-.usernameInputPadding {
-	padding-right:65px;
-}
-
-.usernameInputPadding:focus {
-	padding-right:45px;
 }
 
 /*OK ICONE AND ERRO ICONE FROM INPUT*/
@@ -141,10 +122,6 @@ form input[type="submit"] {
 .passwordInputStatusIconePosition {
   top:55%;
   right:50px;
-}
-
-.usernameInputStatusIconePosition {
-	right:38px;
 }
 
 /*INPUT SUBMIT PART*/

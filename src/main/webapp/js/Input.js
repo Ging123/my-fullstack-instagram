@@ -79,7 +79,6 @@ const InputValidator = (function() {
 
 	//METHODS OF VALIDATE USERNAME
 	validateUsername = function(input) {
-		console.log("oi")
 		input = $(input);
 		const icone = input.parent().children("i");
 		if(input.val() !== "") {
