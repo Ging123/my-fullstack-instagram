@@ -9,8 +9,35 @@ const singUpScreen = (function() {
     $("#secondSingupScreen").hide();
   }
 
+	//METHODS TO SEND THE DATA OF THE FIRST FORM IN THE SING UP TO THE SERVER
+	function sendInputsOfFirstScreen() {
+		const inputs = document.querySelectorAll("#firstSingUpForm input");
+		const values = {
+			emailOrNumber:inputs[0].value,
+			fullname:inputs[1].value,
+			username:inputs[2].value,
+			password:inputs[3].value
+		};
+		sendFormToServerViaAjax(values, "/my_fullstack_instagram/validateSingupForm");
+	}
+	
+	
+	function sendFormToServerViaAjax(formData, theUrl) {
+		$.ajax({
+	  	url:theUrl,
+			data: {formData:JSON.stringify(formData)},
+			type:'POST',
+			dataType:"json",
+			success:function(data) {
+				func(data);
+			}
+		});
+	}
+	
+	
   $("#singupButton").click(goToDateScreen);
   $("#goBackToEmailScreen").click(backToEmailScreen);
+	$("#singupButton").click(sendInputsOfFirstScreen);
 }());
 
 
