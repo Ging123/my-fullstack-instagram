@@ -18,11 +18,11 @@ const singUpScreen = (function() {
 			username:inputs[2].value,
 			password:inputs[3].value
 		};
-		sendFormToServerViaAjax(values, "/my_fullstack_instagram/validateSingupForm");
+		sendFormToServerViaAjax(values, "/my_fullstack_instagram/validateSingupForm", nextScreen);
 	}
 	
 	
-	function sendFormToServerViaAjax(formData, theUrl) {
+	function sendFormToServerViaAjax(formData, theUrl, func) {
 		$.ajax({
 	  	url:theUrl,
 			data: {formData:JSON.stringify(formData)},
@@ -35,7 +35,18 @@ const singUpScreen = (function() {
 	}
 	
 	
-  $("#singupButton").click(goToDateScreen);
+	function nextScreen(erroMensage) {
+		const erroTag = $("#firstSingUpForm .mensageOfErro");
+		if(erroMensage !== "") {
+			erroTag.show();
+			erroTag.text(erroMensage);
+			return;
+		}
+		erroTag.hide();
+		goToDateScreen();
+	}
+	
+	
   $("#goBackToEmailScreen").click(backToEmailScreen);
 	$("#singupButton").click(sendInputsOfFirstScreen);
 }());

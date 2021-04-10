@@ -1,14 +1,16 @@
 package com.instagramServlets;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.registerUser.SingUpValidator;
-
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+@WebServlet("/validateSingupForm")
 public class ValidadeFormSingUpServlet extends HttpServlet {
 	
 	static class Data {
@@ -22,8 +24,13 @@ public class ValidadeFormSingUpServlet extends HttpServlet {
 		try {
 			Data data = new ObjectMapper().readValue(request.getParameter("formData"), Data.class);
 			SingUpValidator user = new SingUpValidator(data.emailOrNumber, data.fullname, data.username, data.password);
-			System.out.println(user.isValid());
-		} catch (JsonProcessingException e) {
+			final String erroMensage = user.isValid();
+			PrintWriter out = response.getWriter();
+			ObjectMapper mapper = new ObjectMapper();
+			out.print(mapper.writeValueAsString(erroMensage));
+			out.flush();
+			out.close();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

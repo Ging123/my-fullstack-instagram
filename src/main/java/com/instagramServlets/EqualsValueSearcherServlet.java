@@ -5,12 +5,15 @@ import java.io.PrintWriter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import com.database.MySql;
 
+@WebServlet("/searchForEquals")
 public class EqualsValueSearcherServlet extends HttpServlet {
+	
 	
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     MySql sql = new MySql();

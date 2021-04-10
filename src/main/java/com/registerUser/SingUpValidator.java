@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 import com.database.MySql;
 
+
 public class SingUpValidator {
 	
 	

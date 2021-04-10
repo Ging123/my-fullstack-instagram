@@ -131,7 +131,7 @@ form input[type="submit"] {
   transform:translateY(-50%);
   position:absolute;
   font-size:2.2rem;
-  color:red;
+  color:var(--erroRed);
 }
 
 .defaultInputStatusIconePosition {

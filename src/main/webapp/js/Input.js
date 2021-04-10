@@ -211,9 +211,11 @@ const InputPassword = (function () {
     const input = $(this).parent().children(".defaultInput");
     if(input.attr("type") === "password") {
       input.attr("type", "text");
+			$(this).text("hide");
       return;
     }
     input.attr("type", "password");
+		$(this).text("show");
   }
 
 

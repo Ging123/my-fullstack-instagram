@@ -1,25 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>my_fullstack_instagram</display-name>
-  
-  <servlet>
-  	<servlet-name>searchForEquals</servlet-name>
-  	<servlet-class>com.instagramServlets.EqualsValueSearcherServlet</servlet-class>
-  </servlet>
 
-  <servlet-mapping>
-  	<servlet-name>searchForEquals</servlet-name>
-  	<url-pattern>/searchForEquals</url-pattern>
-  </servlet-mapping>
-  
-	<servlet>
-		<servlet-name>validateSingupForm</servlet-name>
-		<servlet-class>com.instagramServlets.ValidadeFormSingUpServlet</servlet-class>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>validateSingupForm</servlet-name>
-		<url-pattern>/validateSingupForm</url-pattern>
-	</servlet-mapping>
-  
 </web-app>

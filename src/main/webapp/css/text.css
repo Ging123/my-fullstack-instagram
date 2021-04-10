@@ -44,6 +44,11 @@
   text-decoration:none;
 }
 
+.mensageOfErro {
+	display:block;
+	color:var(--erroRed);
+}
+
 #loginWithFacebook {
   color:var(--facebookBlue);
   font-weight:600;
