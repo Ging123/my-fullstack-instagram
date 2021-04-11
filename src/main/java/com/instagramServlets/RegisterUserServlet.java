@@ -1,5 +1,8 @@
 package com.instagramServlets;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import com.database.MySql;
 import com.instagramServlets.ValidadeFormSingUpServlet.Data;
 import com.instagramServlets.validateDateSingup.DateTyped;

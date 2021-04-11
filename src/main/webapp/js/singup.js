@@ -20,16 +20,16 @@ const singUpScreen = (function() {
 			username:inputs[2].value,
 			password:inputs[3].value
 		};
-		sendFormToServerViaAjax(values, "/my_fullstack_instagram/validateSingupForm", nextScreen);
+		sendFormToServerViaAjax(values, "/my_fullstack_instagram/validateSingupForm", nextScreen, "json", "POST");
 	}
 	
 	
-	sendFormToServerViaAjax = function(formData, theUrl, func) {
+	sendFormToServerViaAjax = function(formData, theUrl, func, typeOfData, typeOfRequest) {
 		$.ajax({
 	  	url:theUrl,
 			data: {formData:JSON.stringify(formData)},
-			type:'POST',
-			dataType:"json",
+			type:typeOfRequest,
+			dataType:typeOfData,
 			success:function(data) {
 				func(data);
 			}
@@ -95,7 +95,7 @@ const selectDates = (function() {
 			day:$("#day").val(),
 			year:$("#year").val()
 		}
-		sendFormToServerViaAjax(date, "/my_fullstack_instagram/validateDate", theUserIsRegister);
+		sendFormToServerViaAjax(date, "/my_fullstack_instagram/validateDate", theUserIsRegister, "json", "POST");
 	}
 	
 	
@@ -107,6 +107,7 @@ const selectDates = (function() {
 			return;
 		}
 		erro.hide();
+		window.open("login.html", "_self");
 	}
 
 

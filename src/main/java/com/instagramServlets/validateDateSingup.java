@@ -46,6 +46,7 @@ public class validateDateSingup extends HttpServlet {
 			session.setAttribute("secondFormularySingup", date);
 			RegisterUserServlet register = new RegisterUserServlet();
 			register.doPost(request, response);
+			returnAnErroMensage(response, "");
 			return;
 		}
 		returnAnErroMensage(response, "some input that you typed is invalid");
