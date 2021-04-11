@@ -1,5 +1,6 @@
 package com.instagramServlets;
 
+import com.database.MySql;
 import com.instagramServlets.ValidadeFormSingUpServlet.Data;
 import com.instagramServlets.validateDateSingup.DateTyped;
 
@@ -15,9 +16,11 @@ public class RegisterUserServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession(false);
 		if(session != null) {
-			Data firstFormData = (Data) session.getAttribute("FirstFormSingupData");
+			Data data = (Data) session.getAttribute("FirstFormSingupData");
 			DateTyped birthDayData = (DateTyped) session.getAttribute("secondFormularySingup");
-			
+			final String birthDay = "'" + birthDayData.year + "-" + birthDayData.month + "-" + birthDayData.day + "'";
+			MySql mysql = new MySql();
+			mysql.insert(birthDay, data.emailOrNumber, data.fullname, data.username, data.password);
 			session.invalidate();
 		}
 	}
