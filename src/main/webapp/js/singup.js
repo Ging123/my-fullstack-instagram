@@ -1,3 +1,5 @@
+var sendFormToServerViaAjax;
+
 const singUpScreen = (function() {
   function goToDateScreen() {
     $("#firstSingupScreen").hide();
@@ -22,7 +24,7 @@ const singUpScreen = (function() {
 	}
 	
 	
-	function sendFormToServerViaAjax(formData, theUrl, func) {
+	sendFormToServerViaAjax = function(formData, theUrl, func) {
 		$.ajax({
 	  	url:theUrl,
 			data: {formData:JSON.stringify(formData)},
@@ -63,8 +65,7 @@ const selectDates = (function() {
 
 
   function addDays() {
-    const d = new Date(), month = d.getMonth(), year = d.getFullYear();
-    const daysInMonth = new Date(year, month, 0).getDate();
+    const daysInMonth = 32;
     for(let i = 1; i < daysInMonth; i++) {
       putOptionInTheSelect($("#day"), i, i);
     }
@@ -72,10 +73,11 @@ const selectDates = (function() {
 
 
   function addYears() {
-    const currentYear = new Date().getFullYear();
-    let years = currentYear - 120, i = 1;
+    let currentYear = new Date().getFullYear();
+    let years = currentYear - 120;
     for(years; years <= currentYear; years++) {
-      putOptionInTheSelect($("#year"), years ,i++);
+      putOptionInTheSelect($("#year"), currentYear ,currentYear);
+			currentYear--;
     }
   }
 
@@ -87,6 +89,22 @@ const selectDates = (function() {
   }
 
 
+	function getData() {
+		const date = {
+		  month:$("#month").val(),
+			day:$("#day").val(),
+			year:$("#year").val()
+		}
+		sendFormToServerViaAjax(date, "/my_fullstack_instagram/validateDate", theUserIsRegister);
+	}
+	
+	
+	function theUserIsRegister(result) {
+		
+	}
+
+
+	$("#nextButton").click(getData);
   addMonths();
   addDays();
   addYears();

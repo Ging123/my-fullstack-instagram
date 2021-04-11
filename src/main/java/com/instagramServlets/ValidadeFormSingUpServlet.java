@@ -9,11 +9,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/validateSingupForm")
 public class ValidadeFormSingUpServlet extends HttpServlet {
 	
-	static class Data {
+	public static class Data {
 		public String emailOrNumber;
 		public String fullname;
 		public String username;
@@ -27,11 +28,18 @@ public class ValidadeFormSingUpServlet extends HttpServlet {
 			final String erroMensage = user.isValid();
 			PrintWriter out = response.getWriter();
 			ObjectMapper mapper = new ObjectMapper();
+			createSeasion(data, request);
 			out.print(mapper.writeValueAsString(erroMensage));
 			out.flush();
 			out.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	
+	private void createSeasion(Data data, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.setAttribute("FirstFormSingupData", data);
 	}
 }
