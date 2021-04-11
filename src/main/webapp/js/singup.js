@@ -100,7 +100,13 @@ const selectDates = (function() {
 	
 	
 	function theUserIsRegister(result) {
-		
+		const erro = $("#secondSingupScreen .mensageOfErro");
+		if(result !== "") {
+			erro.text(result);
+			erro.show();
+			return;
+		}
+		erro.hide();
 	}
 
 
