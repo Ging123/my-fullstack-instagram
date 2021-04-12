@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import com.database.MySql;
 
-@WebServlet("/searchForEquals")
+@WebServlet(name = "searchForEqualsValues", urlPatterns = {"/searchForEquals"})
 public class EqualsValueSearcherServlet extends HttpServlet {
 	
 	

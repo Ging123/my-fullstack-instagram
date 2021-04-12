@@ -40,7 +40,7 @@ public class ValidadeFormSingUpServlet extends HttpServlet {
 	
 	
 	private void createSeasion(HttpServletRequest request, Data formData) {
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(true);
 		session.setAttribute("FirstFormSingupData", formData);
 	}
 }

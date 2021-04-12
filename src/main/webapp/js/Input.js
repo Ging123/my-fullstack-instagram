@@ -246,11 +246,15 @@ const UsernameGenarator = (function() {
 	
 	
 	function validateUsernameGenerated(usernameGenerated, usernameExist) {
-		if(usernameExist) {
+		if(usernameExist === true || usernameExist === false) {
+			if(usernameExist) {
 			generateARandomUsername();
 			return;
-		} 
+		}
 		putUsernameGeneratedInTheInput(usernameGenerated);
+		return;
+		}
+		console.log(usernameExist);
 	}
 	
 	

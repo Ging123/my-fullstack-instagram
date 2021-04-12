@@ -6,10 +6,16 @@ const singUpScreen = (function() {
     $("#secondSingupScreen").show();
   }
 
+
   function backToEmailScreen() {
-    $("#firstSingupScreen").show();
+		$.ajax({
+			url:"/my_fullstack_instagram/cleanSingupSession",
+			type:"GET"
+		});
+		$("#firstSingupScreen").show();
     $("#secondSingupScreen").hide();
   }
+
 
 	//METHODS TO SEND THE DATA OF THE FIRST FORM IN THE SING UP TO THE SERVER
 	function sendInputsOfFirstScreen() {

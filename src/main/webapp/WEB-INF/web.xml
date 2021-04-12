@@ -2,4 +2,14 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>my_fullstack_instagram</display-name>
 
+	<filter>
+		<filter-name>columnVerificator</filter-name>
+    <filter-class>com.filters.ColumnVerificator</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>columnVerificator</filter-name>
+    <servlet-name>searchForEqualsValues</servlet-name>
+	</filter-mapping>
+	
 </web-app>
